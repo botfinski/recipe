@@ -1,4 +1,4 @@
-## Recipe React App
+## React Recipe App
 
 Made with create-react-app and [recipepuppy API](http://www.recipepuppy.com)
 
