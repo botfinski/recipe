@@ -1,36 +1,35 @@
 .Search {
+  form {
+    position: relative;
+  }
 
-	form {
-		position: relative;
-	}
+  .SearchInput {
+    width: 85%;
+    height: 50px;
+    padding: 20px;
+    font-size: 20px;
+    border: 1px solid #c8c8c8;
+  }
 
-	.SearchInput {
-		width: 85%;
-		height: 50px;
-		padding: 20px;
-		font-size: 20px;
-		border: 1px solid #c8c8c8;
-	}
+  .SubmitButton {
+    width: 15%;
+    height: 50px;
+    cursor: pointer;
+    border: 0px solid transparent;
+    background: cornflowerblue;
+    color: #fff;
+    font-size: 20px;
+  }
 
-	.SubmitButton {
-		width: 15%;
-		height: 50px;
-		cursor: pointer;
-		border: 0px solid transparent;
-		background: cornflowerblue;
-		color: #fff;
-		font-size: 20px;
-	}
-
-	.MenuToggle {
-		position: absolute;
-		top: 0;
-		right: 15%;
-		width: 50px;
-		height: 50px;
-		font-size: 20px;
-		border:0;
-		background: transparent;
-		cursor: pointer;
-	}
+  .MenuToggle {
+    position: absolute;
+    top: 0;
+    right: 15%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
 }

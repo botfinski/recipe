@@ -1,26 +1,25 @@
 .Loader {
-	width: 100%;
-	padding: 100px 0;
+  width: 100%;
+  padding: 100px 0;
 
-	&:after {
-		content: '';
-		display: block;
-		width: 100px;
-		height: 100px;
-		margin: 0 auto;
-		border-radius: 50%;
-		border: 10px solid #000;
-		border-color: #000 transparent #000 transparent;
-		animation: Loader 1.2s linear infinite;
-	}
+  &:after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    border: 10px solid #000;
+    border-color: #000 transparent #000 transparent;
+    animation: Loader 1.2s linear infinite;
+  }
 }
-	
+
 @keyframes Loader {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-  

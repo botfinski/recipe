@@ -1,26 +1,24 @@
 .IngredientsList {
+  max-height: 0;
+  overflow-y: scroll;
+  transition: all 0.3s ease;
 
-	max-height: 0;
-	overflow-y: scroll;
-	transition: all 0.3s ease;
+  &.opened {
+    max-height: 200px;
+  }
 
-	&.opened {
-		max-height: 200px;
-	}
+  .Ingredient {
+    background: #e0e0e0;
+    margin: 5px 0;
+    padding: 10px;
+    cursor: pointer;
 
+    &.selected {
+      background: #acacac;
+    }
 
-	.Ingredient {
-		background: #e0e0e0;
-		margin: 5px 0;
-		padding: 10px;
-		cursor: pointer;
-
-		&.selected {
-			background: #acacac;
-		}
-
-		input {
-			margin: 0 15px 0 0;
-		}
-	}
+    input {
+      margin: 0 15px 0 0;
+    }
+  }
 }
