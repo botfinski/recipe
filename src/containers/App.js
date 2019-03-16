@@ -28,13 +28,13 @@ class App extends Component {
       return fetch("https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/");
     }
     if (query && !page) {
-      return fetch("https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?" + query);
+      return fetch(`https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?${query}`);
     }
     if (!query && page) {
-      return fetch("https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?p=" + page);
+      return fetch(`https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?p=${page}`);
     }
     if (query && page) {
-      return fetch("https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?" + query + "&p=" + page);
+      return fetch(`https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?${query}&p=${page}`);
     }
   }
 
@@ -45,8 +45,8 @@ class App extends Component {
       selectedIngredients: []
     });
 
-    let ingredientsArray = [];
-    let tempRecipes = [];
+    const ingredientsArray = [];
+    const tempRecipes = [];
 
     if (!this.state.currentSearchQuery.includes(query)) {
       this.setState({ currentPage: 1 });
@@ -57,11 +57,11 @@ class App extends Component {
       .then(data => {
         data.results.map(recipe => {
           if (!arguments.length) {
-            let ingredients = recipe.ingredients.split(",");
+            const ingredients = recipe.ingredients.split(",");
 
             ingredients.map(ingredient => ingredientsArray.push(ingredient.trim()));
 
-            let ingredientsSet = [...new Set(ingredientsArray)];
+            const ingredientsSet = [...new Set(ingredientsArray)];
 
             this.setState({ ingredients: ingredientsSet });
           }
@@ -86,19 +86,20 @@ class App extends Component {
   makeQueryString() {
     if (this.searchInputRef.value === "" && !this.state.selectedIngredients.length) {
       return "";
-		}
-		if (this.searchInputRef.value !== "" && !this.state.selectedIngredients.length) {
-      return "q=" + this.searchInputRef.value;
+    }
+    if (this.searchInputRef.value !== "" && !this.state.selectedIngredients.length) {
+      return `q=${this.searchInputRef.value}`;
     }
     if (this.searchInputRef.value === "" && this.state.selectedIngredients.length) {
-      return "i=" + this.state.selectedIngredients.join(",");
+      return `i=${this.state.selectedIngredients.join(",")}`;
     }
     if (this.searchInputRef.value !== "" && this.state.selectedIngredients.length) {
-      return ("q=" + this.searchInputRef.value + "&i=" + this.state.selectedIngredients.join(","));
+      return `q=${this.searchInputRef.value}&i=${this.state.selectedIngredients.join(",")}`;
     }
   }
 
   handleSearch = this.handleSearch.bind(this);
+
   handleSearch(e) {
     e.preventDefault();
 
@@ -107,22 +108,23 @@ class App extends Component {
     }
 
     if (e.target.nodeName === "FORM") {
-      let combinedQueryString = this.makeQueryString();
+      const combinedQueryString = this.makeQueryString();
 
       this.fetchResults(combinedQueryString);
     }
     if (e.target.nodeName === "BUTTON") {
       this.searchInputRef.value = "";
 
-      this.fetchResults("i=" + e.target.value);
+      this.fetchResults(`i=${e.target.value}`);
     }
   }
 
   handleIngredientSelected = this.handleIngredientSelected.bind(this);
-  handleIngredientSelected(e) {
-    let tempSelectedIngredients = [...this.state.selectedIngredients];
 
-    let ingredient = e.target.value ? e.target.value : e.target.dataset.value;
+  handleIngredientSelected(e) {
+    const tempSelectedIngredients = [...this.state.selectedIngredients];
+
+    const ingredient = e.target.value ? e.target.value : e.target.dataset.value;
 
     if (!this.state.selectedIngredients.includes(ingredient)) {
       tempSelectedIngredients.push(ingredient);
@@ -136,6 +138,7 @@ class App extends Component {
   }
 
   handleNextPageClicked = this.handleNextPageClicked.bind(this);
+
   handleNextPageClicked() {
     this.fetchResults(this.state.currentSearchQuery, this.state.currentPage + 1);
 
@@ -143,6 +146,7 @@ class App extends Component {
   }
 
   handlePrevPageClicked = this.handlePrevPageClicked.bind(this);
+
   handlePrevPageClicked() {
     this.fetchResults(this.state.currentSearchQuery, this.state.currentPage - 1);
 
@@ -150,6 +154,7 @@ class App extends Component {
   }
 
   handleMenuToggle = this.handleMenuToggle.bind(this);
+
   handleMenuToggle() {
     this.setState(prevState => ({ menuOpened: !prevState.menuOpened }));
   }
@@ -162,16 +167,9 @@ class App extends Component {
     } else if (this.state.error) {
       recipeList = <Error error="There was an error while processing data!" />;
     } else if (!this.state.recipes.length) {
-      recipeList = (
-        <Error error="There are no recipes for searched ingredients." />
-      );
+      recipeList = <Error error="There are no recipes for searched ingredients." />;
     } else if (this.state.recipes.length) {
-      recipeList = (
-        <RecipeList
-          recipes={this.state.recipes}
-          handleSearch={this.handleSearch}
-        />
-      );
+      recipeList = <RecipeList recipes={this.state.recipes} handleSearch={this.handleSearch} />;
     }
 
     return (
