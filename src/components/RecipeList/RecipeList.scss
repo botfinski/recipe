@@ -1,0 +1,38 @@
+.RecipeList {
+	ul {
+    list-style: none;
+    
+    .Recipe {
+      padding: 20px;
+			margin: 10px 0;
+			display: flex;
+			
+			.RecipeImage {
+				width: 15%;
+
+				img {
+					width: 100%;
+					max-width: 100px;
+					height:auto;
+				}
+			}
+
+			.RecipeDescription {
+				padding: 0 20px;
+
+				p {
+					margin: 0 0 10px 0;
+				}
+			}
+
+      button {
+				background: transparent;
+				font-size: 15px;
+				margin: 0 10px 0 0;
+				border:0;
+				text-decoration: underline;
+				cursor: pointer;
+      }
+    }
+	}
+}

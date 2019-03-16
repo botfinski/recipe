@@ -1,0 +1,19 @@
+.Pagination {
+	display: flex;
+	justify-content: space-between;
+
+	button {
+		width: 200px;
+		height: 50px;
+		cursor: pointer;
+		border: 0px solid transparent;
+		background: cornflowerblue;
+		color: #fff;
+		font-size: 20px;
+
+		&:disabled {
+			background: grey;
+			cursor: not-allowed;
+		}
+	}
+}
